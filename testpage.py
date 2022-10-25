@@ -1,6 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+import random
+
+str1 = '123456789'
+str2 = 'qwertyuiopasdfghjklzxcvbnm'
+str3 = str2.upper()
+str4 = str1+str2+str3
+ls = list(str4)
+random.shuffle(ls)
+psw = ''.join([random.choice(ls) for x in range(12)])
 
 def main():
     driver=webdriver.Chrome()
@@ -31,7 +40,7 @@ def main():
     usermane = driver.find_element(By.XPATH,'#')
     usermane.clear()
     time.sleep(1)
-    usermane.send_keys("#")
+    usermane.send_keys(psw)
     time.sleep(1)
     sohr = driver.find_element(By.XPATH,'#')
     sohr.click()
